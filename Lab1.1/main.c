@@ -8,7 +8,7 @@ int main() {
   }
 
   for( i = 0 ; i < n ; i++ ) {
-    printf( "[%d] Hello world" , n + 1 ) ;
+    printf( "[%d] Hello world\n" , i + 1 ) ;
   }
 
   return 0 ;
