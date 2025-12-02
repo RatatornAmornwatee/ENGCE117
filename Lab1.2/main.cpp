@@ -6,6 +6,10 @@ int main() {
     int *data, num ;
     GetSet( &data, &num ) ;
 
+    for ( int i = 0 ; i < num ; i++ ) {
+        printf("%d",data[i]);
+    }// end for loop
+
     return 0 ;
 }// end main function
 
@@ -31,4 +35,5 @@ void GetSet( int **data , int *num ) {
     }// end for loop
 
     *data = arr ;
+    delete [] arr ;
 }// end GetsSet function
