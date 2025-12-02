@@ -3,7 +3,7 @@
 void GetSet( int ** , int * ) ;
 
 int main() {
-    int *data, num;
+    int *data, num ;
     GetSet( &data, &num ) ;
 
     return 0 ;
@@ -25,7 +25,9 @@ void GetSet( int **data , int *num ) {
     arr = new int[ *num ] ;
 
     for ( i = 0 ; i < *num ; i++ ) {
-        scanf( "%d" , &arr[ i ] ) ;
+        if ( scanf( "%d" , &arr[ i ] ) != 1 ) {
+            arr[ i ] = 0 ;
+        }// end if
     }// end for loop
 
     *data = arr ;
