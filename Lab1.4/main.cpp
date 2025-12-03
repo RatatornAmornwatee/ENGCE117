@@ -5,7 +5,14 @@ int GetSet( int [] ) ;
 int main() {
     int *data ; 
     int num ;
+    int i = 0 ;
     num = GetSet( data ) ;
+
+    for( i = 0 ; i < num ; i++ ) {
+        printf( "\n%d" , data[i] ) ;
+    }
+
+    delete [] data ;
 
     return 0 ;
 }// end main function
