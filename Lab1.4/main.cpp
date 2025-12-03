@@ -1,12 +1,12 @@
 #include <stdio.h>
 
-int GetSet( int [] ) ;
+int GetSet( int ** ) ;
 
 int main() {
     int *data ; 
     int num ;
     int i = 0 ;
-    num = GetSet( data ) ;
+    num = GetSet( &data ) ;
 
     for( i = 0 ; i < num ; i++ ) {
         printf( "\n%d" , data[i] ) ;
@@ -17,24 +17,24 @@ int main() {
     return 0 ;
 }// end main function
 
-int GetSet( int data[] ) {
+int GetSet( int **data ) {
+    *data = new int[2] ;
     int num ;
+    int i = 0 ;
 
     if ( scanf( "%d" , &num ) != 1 ) {
         printf( "Error" ) ;
         return 0 ;
-    }// end if
+    }
 
     if ( num <= 0 ) {
         printf( "Error" ) ;
         return 0 ;
-    }// end if
-
-    int i =  0 ;
+    }
 
     for( i = 0 ; i < num ; i++ ) {
-        scanf( "%d" , &data[i] ) ;
-    }//end for loop
+        scanf( "%d" , &(*data)[i] ) ;
+    }
 
     return num ;
 }// end GetSet function
