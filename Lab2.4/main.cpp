@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
-void explode( char str1[] , char splitter , char str2[ 20 ][ 10 ] , int *count ) ;
+#define MAX_ARRAY_SIZE 20
+#define MAX_OUT_LEN 10
+#define MAX_INPUT_LEN 50
+
+void explode( char str1[] , char splitter , char str2[ MAX_ARRAY_SIZE ][ MAX_OUT_LEN ] , int *count ) ;
 
 int main() {
 
-    char str[ 50 ] = "I/Love/You"  ;
-    char out[ 20 ][ 10 ] ;
+    char str[ MAX_INPUT_LEN ] = "I/Love/You"  ;
+    char out[ MAX_ARRAY_SIZE ][ MAX_OUT_LEN ] ;
     int num ;
     explode( str , '/' , out , &num ) ;
     
@@ -20,25 +24,24 @@ int main() {
 
 }// end main function
 
-void explode( char str1[] , char splitter , char str2[ 20 ][ 10 ] , int *count ) {
+void explode( char str1[] , char splitter , char str2[ MAX_ARRAY_SIZE ][ MAX_OUT_LEN ] , int *count ) {
    
     *count = 0 ;
 
-    char word[10] ;
+    char word[ MAX_OUT_LEN ] ;
     int word_pos  = 0 ;
 
     int i = 0 ;
 
     while ( str1[ i ] != '\0' ) {
         if ( str1[ i ] == splitter ) {
-            word[ word_pos + 1 ] = '\0' ;
+            word[ word_pos ] = '\0' ;
             strcpy( str2[ *count ] , word ) ;
             *count += 1 ;
             word_pos = 0 ;
         }
         else{
-            word[ word_pos ] = str1[ i ] ;
-            word_pos++ ;
+            word[ word_pos++ ] = str1[ i ] ;
         }// end if else
         i++ ;
     }// end while loop
