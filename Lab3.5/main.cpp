@@ -20,13 +20,13 @@ int main() {
         return 1 ;
     }// end if
 
-    int i ;
-    int j ;
+    int showi ;
+    int showj ;
 
     printf( "ROOM\tNAME\tAGE\tSEX\tGPA\n" ) ;
-    for( i = 0 ; i < group ; i++ ) {
-        for( j= 0 ; j < 10 ; j++ ) {
-            printf( "%d\t%s\t%d\t%c\t%.2f\n" , i + 1 , children[ i ][ j ].name , children[ i ][ j ].age , children[ i ][ j ].sex , children[ i ][ j ].gpa ) ;
+    for( showi = 0 ; showi < group ; showi++ ) {
+        for( showj = 0 ; showj < 10 ; showj++ ) {
+            printf( "%d\t%s\t%d\t%c\t%.2f\n" , showi + 1 , children[ showi ][ showj ].name , children[ showi ][ showj ].age , children[ showi ][ showj ].sex , children[ showi ][ showj ].gpa ) ;
         }// end for loop
     }// end for loop
 
@@ -57,17 +57,25 @@ struct student ( *GetStudent( int *room ) )[ 10 ] {
             char name[ 20 ] ;
 
             printf( "Name: " ) ;
-            scanf( "%s" , name ) ;
+            if ( scanf( "%s" , name ) != 1 ) {
+                return nullptr ;
+            }
             strcpy( child[ i ][ j ].name , name ) ;
 
             printf( "Age: " ) ;
-            scanf( "%d" , &child[ i ][ j ].age ) ;
+            if ( scanf( "%d" , &child[ i ][ j ].age ) != 1 ) {
+                return nullptr ;
+            }
 
             printf( "Sex: " ) ;
-            scanf(" %c", &child[i][j].sex ) ;
+            if ( scanf(" %c", &child[ i ][ j ].sex ) != 1 ) {
+                return nullptr ;
+            }
 
-            printf("GPA: ");
-            scanf("%f", &child[i][j].gpa ) ;
+            printf("GPA: ") ;
+            if ( scanf("%f", &child[ i ][ j ].gpa ) != 1 ) {
+                return nullptr ;
+            }
 
             printf( "\n" ) ;
         }// end for loop
