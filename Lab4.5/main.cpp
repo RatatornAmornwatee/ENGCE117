@@ -53,4 +53,4 @@ void GoNext2( struct studentNode **walk ) {
         return ;
     }// end if
     *walk = (*walk)->next ;
-}//end GoNext1 function
+}//end GoNext2 function
