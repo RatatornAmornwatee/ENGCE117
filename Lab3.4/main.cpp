@@ -13,36 +13,35 @@ void GetStudent ( struct student child[ 20 ][ 10 ] , int *room ) ;
 int main() {
     struct student children[ 20 ][ 10 ] ;
     int group ;
-    int i = 0 ;
-    int j = 0 ;
-    char sex ;
+    int showi = 0 ;
+    int showj = 0 ;
 
     GetStudent( children , &group ) ;
 
     printf( "ROOM\tNAME\tAGE\tSEX\tGPA\n" ) ;
-    for( i = 0 ; i < group ; i++ ) {
-        for( j= 0 ; j < 10 ; j++ ) {
-            printf( "%d\t%s\t%d\t%c\t%.2f\n" , i + 1 , children[ i ][ j ].name , children[ i ][ j ].age , children[ i ][ j ].sex , children[ i ][ j ].gpa ) ;
-        }
-    }
+    for( showi = 0 ; showi < group ; showi++ ) {
+        for( showj= 0 ; showj < 10 ; showj++ ) {
+            printf( "%d\t%s\t%d\t%c\t%.2f\n" , showi + 1 , children[ showi ][ showj ].name , children[ showi ][ showj ].age , children[ showi ][ showj ].sex , children[ showi ][ showj ].gpa ) ;
+        }// end for loop
+    }// end for loop
+
+    delete [] children ;
 
     return 0 ;
-}
+}// end main function
 
 void GetStudent ( struct student child[ 20 ][ 10 ] , int *room ) {
 
     if ( scanf( "%d" , room ) != 1 ) {
         return ;
-    }
+    }// end if
 
     if ( *room < 0 ) {
         return ;
-    }
+    }// end if
 
     int i = 0 ;
     int j = 0 ;
-
-    char name[ 20 ] ;
 
     for( i = 0 ; i < *room ; i++ ) {
 
@@ -50,7 +49,6 @@ void GetStudent ( struct student child[ 20 ][ 10 ] , int *room ) {
 
         for( j = 0 ; j < 10 ; j++ ) {
             char name[ 20 ] ;
-            char sex ;
 
             printf( "Name: " ) ;
             scanf( "%s" , name ) ;
@@ -66,6 +64,6 @@ void GetStudent ( struct student child[ 20 ][ 10 ] , int *room ) {
             scanf("%f", &child[i][j].gpa ) ;
 
             printf( "\n" ) ;
-        }
-    }
-}
+        }// end for loop
+    }// end for loop
+}// end GetStudent function
