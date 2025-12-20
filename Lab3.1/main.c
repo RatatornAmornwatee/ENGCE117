@@ -25,7 +25,10 @@ void upgrade( struct student *child ) {
     if ( child->sex = 'M' ) {
         child->gpa *= 1.1 ;
     }
-    else {
+    else if ( child->sex = 'F' ) {
         child->gpa *= 1.2 ;
+    }
+    else{
+        return ;
     }// end if else
 }// end upgrade function
