@@ -28,12 +28,12 @@ public:
         }//end while
     }//end ~LinkedList
 
-    void InsNode(const char n[], int a, char s, float g) {
+    void InsNode(const char name[], int age, char sex, float gpa) {
         struct studentNode *newNode = new studentNode;
-        strcpy(newNode->name, n);
-        newNode->age = a;
-        newNode->sex = s;
-        newNode->gpa = g;
+        strcpy(newNode->name, name);
+        newNode->age = age;
+        newNode->sex = sex;
+        newNode->gpa = gpa;
 
         newNode->next = *now;
         *now = newNode;
@@ -87,43 +87,46 @@ public:
         return *now;
     }//end NowNode
 
-    void EditNode(const char n[], int a, char s, float g) {
+    void EditNode(const char name[], int age, char sex, float gpa) {
         if (*now != NULL) {
-            strcpy((*now)->name, n);
-            (*now)->age = a;
-            (*now)->sex = s;
-            (*now)->gpa = g;
+            strcpy((*now)->name, name);
+            (*now)->age = age;
+            (*now)->sex = sex;
+            (*now)->gpa = gpa;
         }//end if
     }//end EditNode
 };// end LinkedList class
 
 void EditData(LinkedList *ll) {
-    char n[20], newN[20], s;
-    int a;
-    float g;
+    char name[20] ;
+    char newN[20] ;
+    char sex;
+    int age;
+    float gpa;
     printf("Enter Name to find: ");
-    scanf("%s", n);
-    if (ll->FindNode(n)) {
+    scanf("%s", name);
+    if (ll->FindNode(name)) {
         printf("Enter New Name, Age, Sex, GPA: ");
-        scanf("%s %d %c %f", newN, &a, &s, &g);
-        ll->EditNode(newN, a, s, g);
+        scanf("%s %d %c %f", newN, &age, &sex, &gpa);
+        ll->EditNode(newN, age, sex, gpa);
     } else {
         printf("Not found.\n");
     }// end if else
 }// end EditData function
 
 void AddData(LinkedList *ll) {
-    char n[20], s;
-    int a;
-    float g;
+    char name[20];
+    char sex;
+    int age;
+    float gpa;
 
-    printf("Name: "); scanf("%s", n);
-    printf("Age: ");  scanf("%d", &a);
-    printf("Sex: ");  scanf(" %c", &s); // Note the space before %c to catch newline
-    printf("GPA: ");  scanf("%f", &g);
+    printf("Name: "); scanf("%s", name);
+    printf("Age: ");  scanf("%d", &age);
+    printf("Sex: ");  scanf(" %c", &sex);
+    printf("GPA: ");  scanf("%f", &gpa);
 
     ll->GoLast();
-    ll->InsNode(n, a, s, g);
+    ll->InsNode(name, age, sex, gpa);
 }// end AddData function
 
 void FindData(LinkedList *ll) {
@@ -142,12 +145,13 @@ void FindData(LinkedList *ll) {
 void readfile(LinkedList *ll) {
     FILE *fp = fopen("data.txt", "r");
     if (fp == NULL) return;
-    char n[20], s;
-    int a;
-    float g;
-    while (fscanf(fp, "%s %d %c %f", n, &a, &s, &g) != EOF) {
+    char name[20];
+    char sex;
+    int age;
+    float gpa;
+    while (fscanf(fp, "%s %d %c %f", name, &age, &sex, &gpa) != EOF) {
         ll->GoLast();
-        ll->InsNode(n, a, s, g);
+        ll->InsNode(name, age, sex, gpa);
     }// end while
     fclose(fp);
 }// end readfile function
@@ -177,10 +181,10 @@ int main() {
             case 1: AddData(&listA); break;
             case 2: EditData(&listA); break;
             case 3: 
-                char n[20];
+                char name[20];
                 printf("Name to delete: ");
-                scanf("%s", n);
-                if (listA.FindNode(n)) listA.DelNode();
+                scanf("%s", name);
+                if (listA.FindNode(name)) listA.DelNode();
                 else printf("Not found.\n");
                 break;
             case 4: FindData(&listA); break;
