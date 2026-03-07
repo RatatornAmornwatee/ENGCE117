@@ -27,7 +27,7 @@ int *KnapsackDP( int *w, int *v, int n, int wx ) {
 
             if ( i - 1 < 0 ) {
                 a = 0 ;
-                Sa = ( int * ) calloc( n, sizeof( int ) ) ;
+                Sa = new int[ n ]() ; 
             } else {
                 a = u[ i - 1 ][ j ] ;
                 Sa = y[ i - 1 ][ j ] ;
@@ -35,14 +35,14 @@ int *KnapsackDP( int *w, int *v, int n, int wx ) {
 
             if ( j - w[ i ] < 0 ) {
                 b = -999999 ;
-                Sb = ( int * ) calloc( n, sizeof( int ) ) ;
+                Sb = new int[ n ]() ;
             } else if ( j - w[ i ] == 0 || i - 1 < 0 ) {
                 b = v[ i ] ;
-                Sb = ( int * ) calloc( n, sizeof( int ) ) ;
+                Sb = new int[ n ]() ;
                 Sb[ i ] = 1 ;
             } else {
                 b = u[ i - 1 ][ j - w[ i ] ] + v[ i ] ;
-                Sb = ( int * ) malloc( n * sizeof( int ) ) ;
+                Sb = new int[ n ] ;
                 for ( k = 0 ; k < n ; k++ ) Sb[ k ] = y[ i - 1 ][ j - w[ i ] ][ k ] ;
                 Sb[ i ] = 1 ;
             } // end if else
