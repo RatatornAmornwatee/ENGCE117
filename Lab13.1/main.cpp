@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int *KnapsackDP( int *w, int *v, int n, int wx ) ;
 
